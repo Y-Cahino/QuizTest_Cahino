@@ -18,16 +18,19 @@ namespace QuizTest_Cahino
     }
     public class Tipo_Domande
     {
+        private bool aperte=false;
+        private bool multiple=false;
         public Tipo_Domande()
         {
             
         }
-        public virtual void tipo1(bool ap_chiuso )
+        public virtual void Tipo1(bool ap_chiuso ) //Tipo1= Aperte o Chiuse, aperte = true (presenti)
         {
             if(ap_chiuso )
             {
+                aperte = true;
 
-            }
+            } 
         }
     }
     
