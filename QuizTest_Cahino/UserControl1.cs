@@ -16,5 +16,10 @@ namespace QuizTest_Cahino
         {
             InitializeComponent();
         }
+
+        private void UserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

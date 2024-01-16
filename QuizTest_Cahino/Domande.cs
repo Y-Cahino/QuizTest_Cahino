@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace QuizTest_Cahino
 {
+    
     public abstract class Domande
     {
+        public Random r = new Random();//valore rnd per quantità domande e tipologia
         public virtual string tipo()
         {
-            Random rnd = new Random(); //valore rnd per quantità domande e tipologia
+            for(int i=0;i<r.Next(0,29);i++)
+            {
+
+            }
+
 
 
         } 
@@ -20,18 +26,25 @@ namespace QuizTest_Cahino
     {
         private bool aperte=false;
         private bool multiple=false;
+        private bool vf_ = false;
         public Tipo_Domande()
         {
             
         }
         public virtual void Tipo1(bool ap_chiuso ) //Tipo1= Aperte o Chiuse, aperte = true (presenti)
         {
+            
             if(ap_chiuso )
             {
                 aperte = true;
 
             } 
         }
+        public virtual void Tipo2(bool vf)//Tipo2= Vero o falso
+        {
+
+        }
+            
     }
     
 }
