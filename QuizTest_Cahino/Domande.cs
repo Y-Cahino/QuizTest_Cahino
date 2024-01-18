@@ -11,16 +11,19 @@ namespace QuizTest_Cahino
     public abstract class Domande
     {
         public Random r = new Random();//valore rnd per quantità domande e tipologia
-        public virtual string tipo()
+        public virtual int Ndomande()
         {
-            for(int i=0;i<r.Next(0,29);i++)
+           int i=r.Next(1, 30);
+            return i;
+
+        }
+        public virtual string Qualid()
+        {
+            for(int i=0; i<Ndomande(); i++)
             {
 
             }
-
-
-
-        } 
+        }
     }
     public class Tipo_Domande
     {
