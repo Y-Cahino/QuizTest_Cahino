@@ -8,47 +8,35 @@ using System.Threading.Tasks;
 namespace QuizTest_Cahino
 {
     
-    public abstract class Domande
+    public interface IComponent
     {
-        public Random r = new Random();//valore rnd per quantità domande e tipologia
-        public virtual int Ndomande()
+        int CalcolaPunteggio();
+    }
+    public class Component1 : IComponent
+    {
+        public int CalcolaPunteggio() { return 1; }
+    }
+    public class Component2 : IComponent
+    {
+        public int CalcolaPunteggio() { return 2; }
+    }
+    public class Component3 : IComponent
+    {
+        public int CalcolaPunteggio() { return 1; }
+    }
+    public class QuizComposite:IComponent
+    {
+       private Random r= new Random();
+        private IComponent[] domande;
+        public QuizComposite()
         {
-           int i=r.Next(1, 30);
-            return i;
-
-        }
-        public virtual string Qualid()
-        {
-            int[] a = new int[0];
-            for (int i=0; i<Ndomande(); i++)
+            int nDomande=r.Next(3,10); //n casuale domande nel test
+            for(int i=0;i<nDomande;i++)
             {
-                int j = r.Next(1, 30);
-                a[i] = i * i;
+                int tipoDomanda=r.Next(1,4); //n casuale per determinare tipologia doomanda
             }
         }
-    }
-    public class Tipo_Domande
-    {
-        private bool aperte=false;
-        private bool multiple=false;
-        private bool vf_ = false;
-        public Tipo_Domande()
-        {
-            
-        }
-        public virtual void Tipo1(bool ap_chiuso ) //Tipo1= Aperte o Chiuse, aperte = true (presenti)
-        {
-            
-            if(ap_chiuso )
-            {
-                aperte = true;
-
-            } 
-        }
-        public virtual void Tipo2(bool vf)//Tipo2= Vero o falso
-        {
-
-        }
+       
             
     }
     
