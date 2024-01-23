@@ -19,9 +19,11 @@ namespace QuizTest_Cahino
         }
         public virtual string Qualid()
         {
-            for(int i=0; i<Ndomande(); i++)
+            int[] a = new int[0];
+            for (int i=0; i<Ndomande(); i++)
             {
-
+                int j = r.Next(1, 30);
+                a[i] = i * i;
             }
         }
     }
