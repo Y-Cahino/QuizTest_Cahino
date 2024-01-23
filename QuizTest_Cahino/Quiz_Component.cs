@@ -5,6 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Windows.Markup;
+using System.Windows.Forms;
 
 namespace QuizTest_Cahino
 {
@@ -16,26 +21,43 @@ namespace QuizTest_Cahino
         }
         public class QuizComposite : IComponent
         {
+            private List<Component> Domande = new List<Component>();
             private Random r = new Random();
             private IComponent[] domande;
-            public QuizComposite()
+            public QuizComposite(string filePath)
+            {
+                CaricaDomande(filePath);
+            }
+            private void CaricaDomande(string filePath)
             {
                 int nDomande = r.Next(3, 10); //n casuale domande nel test
-                for (int i = 0; i < nDomande; i++)
+                try
                 {
-                    int tipoDomanda = r.Next(1, 4); //n casuale per determinare tipologia doomanda
-                    switch (tipoDomanda)
+                    var lines = File.ReadAllLines(filePath);
+                    foreach (var line in lines.Skip(1))
                     {
-                        case 1:
-                            domande[i] = new Component1();
-                            break;
-                        case 2:
-                            domande[i] = new Component2();
-                            break;
-                        case 3:
-                            domande[i] = new Component3();
-                            break;
+                        var valori = line.Split(';');
+                        if (valori.Length >= 2)
+                        {
+                            int tipoDomanda = r.Next(1, 4); //n casuale per determinare tipologia doomanda
+                            switch (tipoDomanda)
+                            {
+                                case 1:
+                                    Domande.Add(new Component1());
+                                    break;
+                                case 2:
+                                    Domande.Add(new Component2());
+                                    break;
+                                case 3:
+                                    Domande.Add(new Component3());
+                                    break;
+                            }
+                        }
                     }
+                }
+                catch (Exception ecc)
+                {
+                    MessageBox.Show(ecc.Message);
                 }
             }
             public int CalcolaPunteggio()
@@ -45,4 +67,4 @@ namespace QuizTest_Cahino
                 return tot;
             }
         }
-}
+    }
