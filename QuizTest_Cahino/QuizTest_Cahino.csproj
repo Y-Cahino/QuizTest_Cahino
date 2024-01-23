@@ -42,7 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component1.cs" />
+    <Compile Include="Component1.Designer.cs">
+      <DependentUpon>Component1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component2.cs" />
+    <Compile Include="Component2.Designer.cs">
+      <DependentUpon>Component2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component3.cs" />
+    <Compile Include="Component3.Designer.cs">
+      <DependentUpon>Component3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component4.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component4.Designer.cs">
+      <DependentUpon>Component4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Domande.cs" />
+    <Compile Include="Quiz_Component.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Quiz_Component.Designer.cs">
+      <DependentUpon>Quiz_Component.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
